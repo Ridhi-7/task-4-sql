@@ -1,0 +1,74 @@
+
+
+-- Create Database
+CREATE DATABASE company_db;
+
+USE company_db;
+
+-- Create Employee Table
+CREATE TABLE employees (
+    emp_id INT PRIMARY KEY,
+    emp_name VARCHAR(50),
+    department VARCHAR(30),
+    salary INT
+);
+
+-- Insert Sample Data
+INSERT INTO employees VALUES
+(1,'Rahul','IT',50000),
+(2,'Aman','HR',35000),
+(3,'Priya','IT',60000),
+(4,'Neha','Sales',40000),
+(5,'Rohit','HR',45000),
+(6,'Ankit','Sales',55000),
+(7,'Pooja','IT',70000),
+(8,'Karan','Sales',48000);
+
+-- Display all records
+SELECT * FROM employees;
+
+-- Total Salary
+SELECT SUM(salary) AS Total_Salary
+FROM employees;
+
+-- Average Salary
+SELECT AVG(salary) AS Average_Salary
+FROM employees;
+
+-- Highest Salary
+SELECT MAX(salary) AS Highest_Salary
+FROM employees;
+
+-- Lowest Salary
+SELECT MIN(salary) AS Lowest_Salary
+FROM employees;
+
+-- Number of Employees
+SELECT COUNT(*) AS Total_Employees
+FROM employees;
+
+-- Department Wise Employee Count
+SELECT department, COUNT(*) AS Employee_Count
+FROM employees
+GROUP BY department;
+
+-- Department Wise Average Salary
+SELECT department, AVG(salary) AS Average_Salary
+FROM employees
+GROUP BY department;
+
+-- Department Wise Total Salary
+SELECT department, SUM(salary) AS Total_Salary
+FROM employees
+GROUP BY department;
+
+-- Departments Having Average Salary Greater Than 50000
+SELECT department, AVG(salary) AS Average_Salary
+FROM employees
+GROUP BY department
+HAVING AVG(salary) > 50000;
+
+-- Highest Salary in Each Department
+SELECT department, MAX(salary) AS Highest_Salary
+FROM employees
+GROUP BY department;
